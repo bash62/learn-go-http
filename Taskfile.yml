@@ -1,18 +1,17 @@
 version: "3"
 
+tasks:
+    build:
+      desc: Build the app
+      cmds:
+      - GOFLAGS=-mod=mod go build -o bin/go-rest-api internal/main.go
 
-task:
-  build:
-    desc: Build the app
-    cmds:
-    - GOFLAGS=-mod=mod go build -o bin/go-rest-api internal/main.go
+    n:
+      desc: run the app
+      cmds:
+      - GOFLAGS=-mod=mod go run internal/main.go
 
-  n:
-    desc: run the app
-    cmds:
-    - GOFLAGS=-mod=mod go run internal/main.go
-
- swagger.gen:
+    swagger.gen:
         desc: Generate Go code
         cmds:
         - GOFLAGS=-mod=mod go generate github.com/bash62/learn-go-http/internal github.com/bash62/learn-go-http/pkg/swagger
